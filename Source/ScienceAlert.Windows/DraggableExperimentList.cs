@@ -98,6 +98,7 @@ namespace ScienceAlert.Windows
                     {
                         var m = part.Modules["ModuleScienceContainer"] as ModuleScienceContainer;
                         msc.Add(m);
+                        break;		// JLB
                     }
                 }
             }
