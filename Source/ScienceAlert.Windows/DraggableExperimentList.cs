@@ -88,10 +88,16 @@ namespace ScienceAlert.Windows
 		internal void CheckForCollection()
 		{
 			msc = new List<ModuleScienceContainer>();
-			var parts = FlightGlobals.ActiveVessel.Parts.FindAll(p => p.Modules.Contains("ModuleScienceContainer"));
-			Part part = parts[0];
-			var m = part.Modules["ModuleScienceContainer"] as ModuleScienceContainer;
-			msc.Add(m);
+			if (FlightGlobals.ActiveVessel != null) {
+				//var parts = FlightGlobals.ActiveVessel.Parts.FindAll(p => p.Modules.Contains("ModuleScienceContainer"));
+				//Part part = parts[0];
+				var part = FlightGlobals.ActiveVessel.Parts.Find(p => p.Modules.Contains("ModuleScienceContainer"));
+
+				var m = part.Modules["ModuleScienceContainer"] as ModuleScienceContainer;
+				if (m != null && m.Events["CollectAllEvent"].guiActive) {
+					msc.Add(m);
+				}
+			}
 		}
 
 
@@ -100,13 +106,18 @@ namespace ScienceAlert.Windows
 		{
 			int dataCnt = 0;
 			if (FlightGlobals.ActiveVessel != null) {
-				//CheckForCollection();	// JLB -- make sure list has science container
+				var part = FlightGlobals.ActiveVessel.Parts.Find(p => p.Modules.Contains("ModuleScienceContainer"));
+				if (part != null && FlightGlobals.ActiveVessel.Parts.Count > 1) return 1;
+
+#if false
+
+
 				Vessel activeVessel = FlightGlobals.ActiveVessel;
 
 				var parts = FlightGlobals.ActiveVessel.Parts.FindAll(p => p.Modules.Contains("ModuleScienceContainer"));
 
-				// JLB - Any science container will allow "Collect" action.
-				if (parts.Count > 0) return 1;
+				// JLB - Any science container will allow "Collect" action, except a single Kerbal doesn't have a "collect all" action.
+				if (parts.Count > 0 && FlightGlobals.ActiveVessel.Parts.Count > 1) return 1;
 
 #if false
 				for (int i = parts.Count - 1; i > 0; i--)
@@ -116,6 +127,7 @@ namespace ScienceAlert.Windows
 						return 1;
 				}
 				return 0;
+#endif
 #endif
 			}
 			return dataCnt;
