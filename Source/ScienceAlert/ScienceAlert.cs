@@ -52,7 +52,7 @@ namespace ScienceAlert
         {
             if (toolbarControl == null)
             {
-                Log.Write("ExperimentManager.CreateButton", Log.LEVEL.INFO);
+                //Log.Write("ExperimentManager.CreateButton", Log.LEVEL.INFO);
 
                 toolbarControl = gameObject.AddComponent<ToolbarControl>();
                 toolbarControl.AddToAllToolbars(ButtonLeftClicked, ButtonLeftClicked,
@@ -214,7 +214,7 @@ namespace ScienceAlert
 
         internal void PlayAnimation()
         {
-            Log.Write("PlayAnimation", Log.LEVEL.INFO);
+            //Log.Write("PlayAnimation", Log.LEVEL.INFO);
             if (animation == null) animation = DoAnimation();
             //StartCoroutine(DoAnimation());
         }
@@ -245,7 +245,7 @@ namespace ScienceAlert
         }
         internal void StopAnimation()
         {
-            Log.Write("StopAnimation", Log.LEVEL.INFO);
+            //Log.Write("StopAnimation", Log.LEVEL.INFO);
             animation = null;
             //StopCoroutine(DoAnimation());
         }
@@ -254,7 +254,7 @@ namespace ScienceAlert
         /// </summary>
         public void SetUnlit()
         {
-            Log.Write("SetUnlit", Log.LEVEL.INFO);
+            //Log.Write("SetUnlit", Log.LEVEL.INFO);
             animation = null;
             TexturePath = NormalFlaskTexture;
             toolbarControl.SetTexture(NormalFlaskTexture + "-38", NormalFlaskTexture);
@@ -262,7 +262,7 @@ namespace ScienceAlert
 
         public void SetLit()
         {
-            Log.Write("SetLit", Log.LEVEL.INFO);
+            //Log.Write("SetLit", Log.LEVEL.INFO);
             animation = null;
             TexturePath = StarFlaskTextures[0];
             toolbarControl.SetTexture(StarFlaskTextures38[0], StarFlaskTextures[0]);

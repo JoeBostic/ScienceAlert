@@ -39,7 +39,7 @@ namespace ScienceAlert.Experiments
 
         void Awake()
         {
-            Log.Write("ExperimentManager.Awake", Log.LEVEL.INFO);
+            //Log.Write("ExperimentManager.Awake", Log.LEVEL.INFO);
 
             vesselStorage = gameObject.AddComponent<StorageCache>();
             biomeFilter = GetComponent<BiomeFilter>();
@@ -102,7 +102,7 @@ namespace ScienceAlert.Experiments
 
         private System.Collections.IEnumerator UpdateObservers()
         {
-            Log.Write("ExperimentManager.UpdateObservers", Log.LEVEL.INFO);
+            //Log.Write("ExperimentManager.UpdateObservers", Log.LEVEL.INFO);
 
             while (true)
             {
@@ -188,7 +188,7 @@ namespace ScienceAlert.Experiments
 
         public int RebuildObserverList()
         {
-            Log.Write("ExperimentManager.RebuildObserverList", Log.LEVEL.INFO);
+            //Log.Write("ExperimentManager.RebuildObserverList", Log.LEVEL.INFO);
             observers.Clear();
             if (!HighLogic.LoadedSceneIsFlight)
                 return 0;
